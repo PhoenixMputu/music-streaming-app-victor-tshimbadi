@@ -46,7 +46,7 @@ class App extends Component {
       if (window.location.pathname === 'localhost:3000') {
         redirect_uri = 'localhost:3000';
       }
-      window.location.href = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPES.join(" ")}&response_type=${RESPONSE_TYPE}&show_dialog=true`;
+      window.location.href = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${redirect_uri}&scope=${SCOPES.join(" ")}&response_type=${RESPONSE_TYPE}&show_dialog=true`;
     } else {
       this.props.setToken(hashParams.access_token);
     }
