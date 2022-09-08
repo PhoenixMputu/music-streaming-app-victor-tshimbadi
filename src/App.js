@@ -33,7 +33,7 @@ class App extends Component {
 
     if (!hashParams.access_token) {
       const CLIENT_ID = "51e672d5152f4572985f2ed060c80ac2";
-    const REDIRECT_URI = "https://react-spotify.victory-deodeo.repl.co";
+    let redirect_uri = "https://react-spotify.victory-deodeo.repl.co";
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
     const RESPONSE_TYPE = "token";
     const SCOPES = [
@@ -43,6 +43,9 @@ class App extends Component {
       "user-top-read",
       "user-modify-playback-state",
     ];
+      if (window.location.pathname === 'localhost:3000') {
+        redirect_uri = 'localhost:3000';
+      }
       window.location.href = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPES.join(" ")}&response_type=${RESPONSE_TYPE}&show_dialog=true`;
     } else {
       this.props.setToken(hashParams.access_token);
